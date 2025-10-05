@@ -1,296 +1,161 @@
-<!--
-One-page HTML animation for Photography & Videography
-Save as: photography-animation.html and open in a browser.
-Author: ChatGPT
--->
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Photography & Videography — Micro Animation</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OZ Moose - Photography & Videography</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg1:#0f1724; /* deep navy */
-      --bg2:#081123; /* darker */
-      --accent:#ff6b6b; /* coral */
-      --accent2:#4dd0e1; /* teal */
-      --glass: rgba(255,255,255,0.06);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    body {
+      margin: 0;
+      font-family: 'Raleway', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      overflow-x: hidden;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      min-height:100%;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(77,208,225,0.06), transparent 8%),
-                  radial-gradient(1000px 500px at 90% 90%, rgba(255,107,107,0.04), transparent 6%),
-                  linear-gradient(180deg,var(--bg1), var(--bg2));
-      color:#e6eef8;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:48px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+    .parallax {
+      position: relative;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #eaeaea;
+      backdrop-filter: brightness(0.85);
     }
-
-    .card{
-      width:980px;
-      max-width:96vw;
-      border-radius:18px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-      padding:28px;
-      display:grid;
-      grid-template-columns: 1fr 420px;
-      gap:20px;
-      align-items:center;
-      overflow:hidden;
-      position:relative;
+    .parallax h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      margin: 0;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+      animation: fadeInDown 2s ease;
     }
-
-    /* Left: text + thumbnails */
-    .intro{
-      padding:18px 8px;
+    .parallax p {
+      margin-top: 20px;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #f5f5f5;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+      animation: fadeInUp 2.5s ease;
     }
-    h1{
-      margin:0 0 12px 0;
-      font-size:28px;
-      letter-spacing:-0.02em;
+    section.gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 60px 30px;
+      background: #111;
     }
-    p.lead{
-      margin:0 0 18px 0;
-      color:rgba(230,238,248,0.8);
-      line-height:1.45;
+    section.gallery img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.6);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
-
-    .btns{display:flex;gap:12px}
-    .btn{padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);backdrop-filter: blur(6px);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
-    .btn.play{background:linear-gradient(90deg, rgba(77,208,225,0.06), rgba(255,107,107,0.04));}
-
-    /* Thumbnails floating */
-    .thumbnails{
-      margin-top:18px;
-      display:flex;gap:12px;flex-wrap:wrap;max-width:560px
+    section.gallery img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.8);
     }
-    .thumb{
-      width:110px;height:70px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
-      transform-origin:center center;box-shadow:0 6px 16px rgba(2,6,23,0.6);
-      animation:float 6s ease-in-out infinite;
+    section.contact {
+      background: #0f0f0f;
+      padding: 60px 20px;
+      text-align: center;
     }
-    .thumb:nth-child(2){animation-delay:0.6s}
-    .thumb:nth-child(3){animation-delay:1.2s}
-    .thumb:nth-child(4){animation-delay:1.9s}
-    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-
-    @keyframes float{
-      0%{transform:translateY(0) rotate(-1deg) scale(1)}
-      50%{transform:translateY(-10px) rotate(1deg) scale(1.02)}
-      100%{transform:translateY(0) rotate(-1deg) scale(1)}
+    section.contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #ffffff;
+      margin-bottom: 20px;
     }
-
-    /* Right: camera + film */
-    .stage{
-      padding:18px;
-      display:flex;align-items:center;justify-content:center;position:relative;
-      height:320px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.02);
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
-
-    /* Camera SVG box */
-    .camera-wrap{width:320px;height:240px;display:flex;align-items:center;justify-content:center;position:relative}
-
-    /* Shutter animation */
-    .shutter {
-      width:170px;height:170px;border-radius:50%;background:linear-gradient(135deg, #0b1220, #1a2434);
-      display:flex;align-items:center;justify-content:center;position:relative;box-shadow:inset 0 -8px 30px rgba(0,0,0,0.6);
-      overflow:visible;
+    form input, form textarea, form button {
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Raleway', sans-serif;
     }
-
-    .lens-glint{position:absolute;left:58%;top:38%;width:36px;height:36px;border-radius:50%;background:linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02));filter:blur(8px);opacity:0.85}
-
-    .shutter .aperture{
-      width:110px;height:110px;border-radius:50%;background: radial-gradient(circle at 30% 30%, rgba(0,0,0,0.0), rgba(0,0,0,0.6) 60%);
-      position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center
+    form input, form textarea {
+      background: #1a1a1a;
+      color: #fff;
     }
-
-    .blade{
-      position:absolute;width:160px;height:56px;background:linear-gradient(180deg,#0b0f13,#000);left:50%;top:50%;transform-origin:left center;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.6);
+    form input::placeholder, form textarea::placeholder {
+      color: #aaa;
     }
-
-    /* Create 6 blades rotated */
-    .blade.b1{transform:translate(-50%,-50%) rotate(0deg)}
-    .blade.b2{transform:translate(-50%,-50%) rotate(60deg)}
-    .blade.b3{transform:translate(-50%,-50%) rotate(120deg)}
-    .blade.b4{transform:translate(-50%,-50%) rotate(180deg)}
-    .blade.b5{transform:translate(-50%,-50%) rotate(240deg)}
-    .blade.b6{transform:translate(-50%,-50%) rotate(300deg)}
-
-    /* Shutter open/close timeline */
-    .shutter.closing .blade{animation:closeBlade 0.42s forwards}
-    .shutter.opening .blade{animation:openBlade 0.42s forwards}
-
-    @keyframes closeBlade{
-      to{transform: translate(-50%,-50%) rotate(0deg) scaleX(0.02)}
+    form button {
+      background: #ffffff;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
     }
-    @keyframes openBlade{
-      to{transform: translate(-50%,-50%) rotate(var(--r,0deg)) scaleX(1)}
+    form button:hover {
+      background: #ddd;
     }
-
-    /* Film strip */
-    .film{
-      position:absolute;left:-30px;bottom:18px;display:flex;gap:8px;align-items:center;animation:slideFilm 10s linear infinite;
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #0d0d0d;
+      color: #bbb;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
     }
-    .film .cell{width:90px;height:60px;border-radius:6px;overflow:hidden;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03)}
-    .film .cell img{width:100%;height:100%;object-fit:cover}
-
-    @keyframes slideFilm{
-      0%{transform:translateX(0)}
-      50%{transform:translateX(220px)}
-      100%{transform:translateX(0)}
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
-    /* Play pulse */
-    .playPulse{position:absolute;right:26px;top:22px;display:inline-grid;place-items:center}
-    .pulse-btn{width:64px;height:64px;border-radius:50%;display:inline-grid;place-items:center;border:2px solid rgba(255,255,255,0.06);cursor:pointer}
-    .pulse-btn .triangle{width:0;height:0;border-left:14px solid var(--accent);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
-    .pulse{position:absolute;width:64px;height:64px;border-radius:50%;opacity:0.16;animation:pulse 2s infinite}
-    @keyframes pulse{0%{transform:scale(1);opacity:0.16}50%{transform:scale(1.8);opacity:0.04}100%{transform:scale(1);opacity:0.16}}
-
-    /* subtle decorative circles */
-    .decor{position:absolute;right:12px;top:12px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,0.02), transparent 30%);pointer-events:none}
-
-    /* Footer small */
-    .credit{position:absolute;left:18px;bottom:10px;font-size:12px;color:rgba(230,238,248,0.6)}
-
-    @media (max-width:880px){
-      .card{grid-template-columns:1fr;align-items:stretch;padding:18px}
-      .stage{height:260px}
-      .camera-wrap{transform:scale(0.9)}
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <main class="card" role="main" aria-label="Photography and videography animation">
-    <section class="intro">
-      <h1>Capture the Moment — Photography & Videography</h1>
-      <p class="lead">A tiny, interactive demo that blends photography thumbnails, a mechanical shutter animation, and a looping filmstrip to evoke motion picture and still capture. Click <strong>Play</strong> to trigger the shutter and animate the thumbnails.</p>
+  <div class="parallax" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80');">
+    <h1>OZ Moose</h1>
+    <p>Capturing Life in Frames — Photography & Videography</p>
+  </div>
 
-      <div class="btns">
-        <button class="btn play" id="playBtn" aria-pressed="false">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M5 3v18l15-9L5 3z" fill="currentColor"/>
-          </svg>
-          Play
-        </button>
-        <button class="btn" id="autoBtn">Auto loop</button>
-      </div>
+  <section class="gallery">
+    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80" alt="Professional camera">
+    <img src="https://images.unsplash.com/photo-1504386106331-3e4e71712b38?auto=format&fit=crop&w=1000&q=80" alt="Videographer shooting">
+    <img src="https://images.unsplash.com/photo-1485841890310-6a055c88698a?auto=format&fit=crop&w=1000&q=80" alt="Drone filming">
+    <img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?auto=format&fit=crop&w=1000&q=80" alt="Camera closeup">
+    <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1000&q=80" alt="Film production">
+    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1000&q=80" alt="Outdoor photoshoot">
+  </section>
 
-      <div class="thumbnails" id="thumbs">
-        <div class="thumb"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='250'><rect width='100%' height='100%' fill='%230b1220'/><text x='50%' y='50%' fill='%23bfefff' font-size='20' font-family='Arial' text-anchor='middle' dominant-baseline='middle'>Photo 1</text></svg>" alt="photo 1"></div>
-        <div class="thumb"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='250'><rect width='100%' height='100%' fill='%2316232f'/><text x='50%' y='50%' fill='%23ffd7d7' font-size='20' font-family='Arial' text-anchor='middle' dominant-baseline='middle'>Photo 2</text></svg>" alt="photo 2"></div>
-        <div class="thumb"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='250'><rect width='100%' height='100%' fill='%23112b21'/><text x='50%' y='50%' fill='%23d7ffd7' font-size='20' font-family='Arial' text-anchor='middle' dominant-baseline='middle'>Photo 3</text></svg>" alt="photo 3"></div>
-        <div class="thumb"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='250'><rect width='100%' height='100%' fill='%2321142a'/><text x='50%' y='50%' fill='%23e7d7ff' font-size='20' font-family='Arial' text-anchor='middle' dominant-baseline='middle'>Photo 4</text></svg>" alt="photo 4"></div>
-      </div>
-    </section>
+  <div class="parallax" style="background-image: url('https://images.unsplash.com/photo-1481277542470-605612bd2d61?auto=format&fit=crop&w=1950&q=80');">
+    <h1>Stories in Motion</h1>
+    <p>From stills to reels — every frame tells a story.</p>
+  </div>
 
-    <aside class="stage" aria-hidden="false">
-      <div class="camera-wrap" role="img" aria-label="Animated camera shutter">
-        <div class="shutter" id="shutter" aria-hidden="true">
-          <div class="lens-glint"></div>
-          <div class="aperture">
-            <div class="blade b1"></div>
-            <div class="blade b2"></div>
-            <div class="blade b3"></div>
-            <div class="blade b4"></div>
-            <div class="blade b5"></div>
-            <div class="blade b6"></div>
-          </div>
-        </div>
-      </div>
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
-      <div class="playPulse">
-        <div class="pulse" aria-hidden></div>
-        <div class="pulse-btn" id="pulseBtn" title="Play video">
-          <div class="triangle"></div>
-        </div>
-      </div>
-
-      <div class="film" aria-hidden="true" id="film">
-        <div class="cell"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='120'><rect width='100%' height='100%' fill='%231a2434'/><text x='50%' y='50%' fill='%23bfefff' font-size='18' font-family='Arial' text-anchor='middle' dominant-baseline='middle'>Clip A</text></svg>" alt="clip A"></div>
-        <div class="cell"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='120'><rect width='100%' height='100%' fill='%23172212'/><text x='50%' y='50%' fill='%23ffd7d7' font-size='18' font-family='Arial' text-anchor='middle' dominant-baseline='middle'>Clip B</text></svg>" alt="clip B"></div>
-        <div class="cell"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='120'><rect width='100%' height='100%' fill='%23112b21'/><text x='50%' y='50%' fill='%23d7ffd7' font-size='18' font-family='Arial' text-anchor='middle' dominant-baseline='middle'>Clip C</text></svg>" alt="clip C"></div>
-      </div>
-
-      <div class="decor"></div>
-      <div class="credit">Click Play • Shutter & Film demo</div>
-    </aside>
-
-  </main>
-
-  <script>
-    // Simple interactivity: clicking Play triggers shutter and bumps thumbnails
-    const playBtn = document.getElementById('playBtn');
-    const shutter = document.getElementById('shutter');
-    const thumbs = document.querySelectorAll('.thumb');
-    const autoBtn = document.getElementById('autoBtn');
-    const pulseBtn = document.getElementById('pulseBtn');
-    const film = document.getElementById('film');
-
-    let auto = false;
-    let autoInterval = null;
-
-    function triggerShutter() {
-      // add closing class to blades for a quick snap
-      shutter.classList.remove('opening');
-      shutter.classList.add('closing');
-
-      // animate thumbnails (scale/bounce)
-      thumbs.forEach((t,i)=>{
-        t.style.transition = 'transform 420ms cubic-bezier(.2,.9,.3,1)';
-        t.style.transform = `translateY(${-(6 + i*2)}px) scale(1.04)`;
-        setTimeout(()=>{ t.style.transform = '' }, 520 + i*60);
-      });
-
-      // briefly stop film for a framing effect
-      film.style.animationPlayState = 'paused';
-      setTimeout(()=>{
-        shutter.classList.remove('closing');
-        shutter.classList.add('opening');
-        film.style.animationPlayState = 'running';
-      }, 520);
-    }
-
-    playBtn.addEventListener('click', ()=>{
-      const pressed = playBtn.getAttribute('aria-pressed') === 'true';
-      playBtn.setAttribute('aria-pressed', String(!pressed));
-      triggerShutter();
-    });
-
-    pulseBtn.addEventListener('click', ()=>{ triggerShutter(); });
-
-    autoBtn.addEventListener('click', ()=>{
-      auto = !auto;
-      autoBtn.textContent = auto ? 'Auto ON' : 'Auto loop';
-      if(auto){
-        autoInterval = setInterval(triggerShutter, 2100);
-      } else {
-        clearInterval(autoInterval);
-        autoInterval = null;
-      }
-    });
-
-    // small accessibility: keyboard activation
-    playBtn.addEventListener('keyup', (e)=>{ if(e.key === 'Enter' || e.key === ' ') triggerShutter(); });
-    pulseBtn.addEventListener('keyup', (e)=>{ if(e.key === 'Enter' || e.key === ' ') triggerShutter(); });
-
-    // Initial gentle intro animation
-    window.requestAnimationFrame(()=>{
-      document.querySelectorAll('.thumb').forEach((t,i)=>{ t.style.transform = 'translateY(8px)'; t.style.opacity = 0; setTimeout(()=>{ t.style.transition = 'transform 700ms ease, opacity 700ms ease'; t.style.transform=''; t.style.opacity=1 }, 120*i) });
-    });
-
-  </script>
+  <footer>
+    © 2025 OZ Moose Photography & Videography. All rights reserved.
+  </footer>
 </body>
 </html>
