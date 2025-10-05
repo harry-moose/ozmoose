@@ -3,76 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OZ Moose - Photography & Videography</title>
+  <title>OZ Moose</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Raleway', sans-serif;
-      background: #0a0a0a;
-      color: #fff;
+      background: #fafafa;
+      color: #333;
       overflow-x: hidden;
     }
-    .parallax {
+    header.hero {
       position: relative;
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
       height: 100vh;
+      background: url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: #eaeaea;
-      backdrop-filter: brightness(0.85);
+      color: #fff;
     }
-    .parallax h1 {
+    header.hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.45);
+    }
+    header.hero h1, header.hero p {
+      position: relative;
+      z-index: 1;
+    }
+    header.hero h1 {
       font-family: 'Playfair Display', serif;
       font-size: 4rem;
       margin: 0;
-      color: #ffffff;
       text-transform: uppercase;
-      letter-spacing: 4px;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
-      animation: fadeInDown 2s ease;
+      letter-spacing: 3px;
     }
-    .parallax p {
-      margin-top: 20px;
-      font-size: 1.4rem;
-      font-weight: 400;
-      color: #f5f5f5;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
-      animation: fadeInUp 2.5s ease;
+    header.hero p {
+      font-size: 1.3rem;
+      margin-top: 15px;
     }
-    section.gallery {
+    section.collection {
+      padding: 60px 40px;
+      background: #fff;
+    }
+    section.collection h2 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      padding: 60px 30px;
-      background: #111;
     }
-    section.gallery img {
+    .grid-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .grid-item img {
       width: 100%;
-      height: 280px;
+      height: 100%;
       object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.6);
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      transition: transform .5s ease;
     }
-    section.gallery img:hover {
+    .grid-item:hover img {
       transform: scale(1.1);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.8);
+    }
+    section.feature {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 60px 40px;
+      background: #f4f4f4;
+    }
+    section.feature img {
+      flex: 1;
+      max-width: 600px;
+      width: 100%;
+      border-radius: 12px;
+      margin-right: 40px;
+    }
+    section.feature .text {
+      flex: 1;
+    }
+    section.feature h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
     }
     section.contact {
-      background: #0f0f0f;
+      background: #222;
       padding: 60px 20px;
       text-align: center;
+      color: #fff;
     }
     section.contact h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2.5rem;
-      color: #ffffff;
       margin-bottom: 20px;
     }
     form {
@@ -90,59 +122,51 @@
       font-family: 'Raleway', sans-serif;
     }
     form input, form textarea {
-      background: #1a1a1a;
-      color: #fff;
-    }
-    form input::placeholder, form textarea::placeholder {
-      color: #aaa;
+      background: #fff;
+      color: #000;
     }
     form button {
-      background: #ffffff;
-      color: #000;
+      background: #000;
+      color: #fff;
       cursor: pointer;
       font-weight: bold;
       transition: background 0.3s ease;
     }
     form button:hover {
-      background: #ddd;
+      background: #444;
     }
     footer {
       text-align: center;
       padding: 30px;
-      background: #0d0d0d;
+      background: #111;
       color: #bbb;
       font-size: 0.9rem;
-      letter-spacing: 1px;
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="parallax" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80');">
+  <header class="hero">
     <h1>OZ Moose</h1>
     <p>Capturing Life in Frames — Photography & Videography</p>
-  </div>
+  </header>
 
-  <section class="gallery">
-    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80" alt="Professional camera">
-    <img src="https://images.unsplash.com/photo-1504386106331-3e4e71712b38?auto=format&fit=crop&w=1000&q=80" alt="Videographer shooting">
-    <img src="https://images.unsplash.com/photo-1485841890310-6a055c88698a?auto=format&fit=crop&w=1000&q=80" alt="Drone filming">
-    <img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?auto=format&fit=crop&w=1000&q=80" alt="Camera closeup">
-    <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1000&q=80" alt="Film production">
-    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1000&q=80" alt="Outdoor photoshoot">
+  <section class="collection">
+    <h2>Our Work</h2>
+    <div class="grid">
+      <div class="grid-item"><img src="https://images.unsplash.com/photo-1504386106331-3e4e71712b38?auto=format&fit=crop&w=1000&q=80" alt="Videographer"></div>
+      <div class="grid-item"><img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1000&q=80" alt="Film camera"></div>
+      <div class="grid-item"><img src="https://images.unsplash.com/photo-1485841890310-6a055c88698a?auto=format&fit=crop&w=1000&q=80" alt="Drone shot"></div>
+      <div class="grid-item"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80" alt="Professional camera"></div>
+    </div>
   </section>
 
-  <div class="parallax" style="background-image: url('https://images.unsplash.com/photo-1481277542470-605612bd2d61?auto=format&fit=crop&w=1950&q=80');">
-    <h1>Stories in Motion</h1>
-    <p>From stills to reels — every frame tells a story.</p>
-  </div>
+  <section class="feature">
+    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1000&q=80" alt="Outdoor shoot">
+    <div class="text">
+      <h3>Why Choose Us?</h3>
+      <p>We blend creativity and technical expertise to deliver breathtaking photography and videography. From intimate portraits to large-scale productions, every frame is crafted with passion.</p>
+    </div>
+  </section>
 
   <section class="contact">
     <h2>Contact Us</h2>
@@ -155,7 +179,7 @@
   </section>
 
   <footer>
-    © 2025 OZ Moose Photography & Videography. All rights reserved.
+    © 2025 OZ Moose. All rights reserved.
   </footer>
 </body>
 </html>
