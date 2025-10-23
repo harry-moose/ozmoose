@@ -3,202 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OZ Moose</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+  <title>Oz Moose | Photography and Videography</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Raleway', sans-serif;
-      background: #fafafa;
-      color: #333;
-      overflow-x: hidden;
-    }
-    .parallax {
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #fff;
-    }
-    .overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.45);
-    }
-    .parallax h1, .parallax p {
-      position: relative;
-      z-index: 1;
-    }
-    .parallax h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 4rem;
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-    }
-    .parallax p {
-      font-size: 1.3rem;
-      margin-top: 15px;
-    }
-    section.collection {
-      padding: 60px 40px;
-      background: #fff;
-    }
-    section.collection h2 {
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .grid-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-    }
-    .grid-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .5s ease;
-    }
-    .grid-item:hover img {
-      transform: scale(1.1);
-    }
-    section.feature {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      padding: 60px 40px;
-      background: #f4f4f4;
-    }
-    section.feature img {
-      flex: 1;
-      max-width: 600px;
-      width: 100%;
-      border-radius: 12px;
-      margin-right: 40px;
-    }
-    section.feature .text {
-      flex: 1;
-    }
-    section.feature h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-    section.contact {
-      background: #222;
-      padding: 60px 20px;
-      text-align: center;
-      color: #fff;
-    }
-    section.contact h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-    form {
-      max-width: 600px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    form input, form textarea, form button {
-      padding: 15px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-family: 'Raleway', sans-serif;
-    }
-    form input, form textarea {
-      background: #fff;
-      color: #000;
-    }
-    form button {
-      background: #000;
-      color: #fff;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-    form button:hover {
-      background: #444;
-    }
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #111;
-      color: #bbb;
-      font-size: 0.9rem;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: #f0f0f0; background-color: #121212; }
+
+    header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #f0f0f0; background: url('banner.jpg') center/cover fixed; text-align: center; position: relative; }
+    header::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+    header h1, header h2, header a { position: relative; z-index: 1; }
+    header h1 { font-size: 4rem; text-transform: uppercase; letter-spacing: 2px; color: #ffb347; }
+    header h2 { font-size: 1.5rem; margin-top: 10px; color: #ffe680; }
+
+    .btn { margin-top: 30px; padding: 15px 40px; font-size: 1.2rem; background: linear-gradient(90deg, #ffb347, #ffcc33); border: none; border-radius: 8px; cursor: pointer; font-weight: 600; color: #000; transition: 0.3s; }
+    .btn:hover { background: linear-gradient(90deg, #ffcc33, #ffb347); transform: scale(1.05); }
+
+    section { padding: 80px 20px; text-align: center; }
+    .parallax { background-attachment: fixed; background-size: cover; background-position: center; color: #f0f0f0; }
+
+    #portfolio { background: #1e1e1e; }
+    #portfolio h2, #videos h2, #contact h2 { font-size: 2.5rem; margin-bottom: 30px; color: #ffcc33; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .gallery img, .gallery video { width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+
+    #videos { background: url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1600&q=80') center/cover fixed; position: relative; }
+    #videos::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+    #videos h2, #videos .gallery { position: relative; z-index: 1; }
+
+    #contact { background: #1a1a1a; color: #fff; }
+    iframe { width: 100%; max-width: 640px; height: 800px; border: none; border-radius: 10px; box-shadow: 0 0 20px rgba(255,204,51,0.3); }
+    .btn-center { display: flex; justify-content: center; }
+
+    footer { text-align: center; padding: 30px; background: #0d0d0d; color: #aaa; font-size: 0.9rem; }
   </style>
 </head>
 <body>
-  <header class="parallax" style="background-image: url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1950&q=80');">
-    <div class="overlay"></div>
-    <div>
-      <h1>OZ Moose</h1>
-      <p>Capturing Life in Frames</p>
-    </div>
+
+  <header>
+    <h1>Oz Moose</h1>
+    <h2>Photography and Videography</h2>
+    <a href="#contact"><button class="btn">Hire Us</button></a>
   </header>
 
-  <section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1950&q=80'); height: 100vh;">
-    <div class="overlay"></div>
-    <h1>Creative Portraits</h1>
-  </section>
-
-  <section class="collection">
-    <h2>Our Work</h2>
-    <div class="grid">
-      <div class="grid-item"><img src="https://images.unsplash.com/photo-1504386106331-3e4e71712b38?auto=format&fit=crop&w=1000&q=80" alt="Videographer"></div>
-      <div class="grid-item"><img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1000&q=80" alt="Film camera"></div>
-      <div class="grid-item"><img src="https://images.unsplash.com/photo-1485841890310-6a055c88698a?auto=format&fit=crop&w=1000&q=80" alt="Drone shot"></div>
-      <div class="grid-item"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80" alt="Professional camera"></div>
+  <section id="portfolio">
+    <h2>Real Estate Photography Portfolio</h2>
+    <div class="gallery">
+      <img src="real1.jpg" alt="Real Estate 1">
+      <img src="real4.jpg" alt="Real Estate 2">
+      <img src="real3.jpg" alt="Real Estate 3">
+    <!--  <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80" alt="Real Estate 2">
+      <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=800&q=80" alt="Real Estate 3">
+-->
+    </div>
+    <div class="btn-center">
+      <a href="#contact"><button class="btn">Hire Us</button></a>
     </div>
   </section>
-
-  <section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1499084732479-de2c02d45fc4?auto=format&fit=crop&w=1950&q=80'); height: 100vh;">
-    <div class="overlay"></div>
-    <h1>Moments that Matter</h1>
-  </section>
-
-  <section class="feature">
-    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1000&q=80" alt="Outdoor shoot">
-    <div class="text">
-      <h3>Why Choose Us?</h3>
-      <p>We blend creativity and technical expertise to deliver breathtaking photography and videography. From intimate portraits to large-scale productions, every frame is crafted with passion.</p>
+<!--
+  <section id="videos" class="parallax">
+    <h2>Videography Projects</h2>
+    <div class="gallery">
+      <video controls poster="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80">
+        <source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-modern-city-9074/1080p.mp4" type="video/mp4">
+      </video>
+      <video controls poster="https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=800&q=80">
+        <source src="https://cdn.coverr.co/videos/coverr-downtown-cityscape-1588/1080p.mp4" type="video/mp4">
+      </video>
+      <video controls poster="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80">
+        <source src="https://cdn.coverr.co/videos/coverr-drone-flying-over-sea-6704/1080p.mp4" type="video/mp4">
+      </video>
     </div>
   </section>
-
-  <section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1950&q=80'); height: 100vh;">
-    <div class="overlay"></div>
-    <h1>Cinematic Excellence</h1>
-  </section>
-
-  <section class="contact">
-    <h2>Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+-->
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd6IILi6y2bpI6IhL3IRo02uA55cqmYdzEcW-O1mFBIUCel7w/viewform?embedded=true">Loading…</iframe>
   </section>
 
   <footer>
-    © 2025 OZ Moose. All rights reserved.
+    <p>© 2025 Oz Moose. All Rights Reserved.</p>
   </footer>
+
 </body>
 </html>
+
