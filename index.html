@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oz Moose | Photography and Videography</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background-color: #121212; color: #f0f0f0; }
+
+    header {
+      height: 100vh; display: flex; flex-direction: column; justify-content: center;
+      align-items: center; background: url('banner.jpg') center/cover fixed;
+      text-align: center; position: relative;
+    }
+    header::before {
+      content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.5);
+    }
+    header h1, header h2, header a { position: relative; z-index: 1; }
+    header h1 { font-size: 4rem; text-transform: uppercase; letter-spacing: 2px; color: #ffb347; }
+    header h2 { font-size: 1.5rem; margin-top: 10px; color: #ffe680; }
+
+    .btn {
+      margin-top: 30px; padding: 15px 40px; font-size: 1.2rem; font-weight: 600;
+      background: linear-gradient(90deg, #ffb347, #ffcc33);
+      border: none; border-radius: 8px; cursor: pointer; color: #000; transition: 0.3s;
+    }
+    .btn:hover { transform: scale(1.05); }
+
+    section { padding: 80px 20px; text-align: center; }
+    h2 { font-size: 2.5rem; margin-bottom: 30px; color: #ffcc33; }
+
+    /* Real Estate Gallery */
+    #portfolio { background: #1e1e1e; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .gallery img {
+      width: 100%; border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    /* Slideshow */
+    #pako-festa { background: #181818; }
+    .slideshow-container { position: relative; max-width: 900px; margin: auto; }
+    .slide { display: none; }
+    .slide img { width: 100%; border-radius: 10px; }
+
+    .prev, .next {
+      cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px;
+      margin-top: -22px; color: #fff; font-size: 24px; font-weight: bold;
+      background: rgba(0,0,0,0.5); border-radius: 4px;
+    }
+    .prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
+    .prev { left: 0; }
+    .next { right: 0; }
+
+    .dots { margin-top: 20px; }
+    .dot {
+      height: 12px; width: 12px; margin: 0 4px; background: #fff;
+      border-radius: 50%; display: inline-block; transition: background 0.3s;
+    }
+    .dot.active { background: #ffcc33; }
+
+    #contact { background: #1a1a1a; }
+    iframe {
+      width: 100%; max-width: 640px; height: 800px; border: none; border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,204,51,0.3);
+    }
+
+    footer { padding: 30px; background: #0d0d0d; color: #aaa; font-size: 0.9rem; }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Oz Moose</h1>
+  <h2>Photography and Videography</h2>
+  <a href="#contact"><button class="btn">Hire Us</button></a>
+</header>
+
+<section id="portfolio">
+  <h2>Real Estate Photography Portfolio</h2>
+  <div class="gallery">
+    <img src="real1.jpg" alt="Real Estate 1">
+    <img src="real4.jpg" alt="Real Estate 2">
+    <img src="real3.jpg" alt="Real Estate 3">
+  </div>
+</section>
+
+<section id="pako-festa">
+  <h2>We Shoot Public Events As Well</h2>
+
+  <div class="slideshow-container">
+    <div class="slide"><img src="pako/35.jpg"></div>
+    <div class="slide"><img src="pako/94.jpg"></div>
+    <div class="slide"><img src="pako/50.jpg"></div>
+
+    <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+    <span class="next" onclick="changeSlide(1)">&#10095;</span>
+  </div>
+
+  <div class="dots">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <a href="pako-festa.html"><button class="btn">See Full Event Gallery ➜</button></a>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Get in Touch</h2>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd6IILi6y2bpI6IhL3IRo02uA55cqmYdzEcW-O1mFBIUCel7w/viewform?embedded=true"></iframe>
+</section>
+
+<footer>
+  <p>© 2025 Oz Moose. All Rights Reserved.</p>
+</footer>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let slides = document.getElementsByClassName("slide");
+  let dots = document.getElementsByClassName("dot");
+  for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+  slideIndex++;
+  if (slideIndex > slides.length) slideIndex = 1;
+  slides[slideIndex-1].style.display = "block";
+  for (let i = 0; i < dots.length; i++) dots[i].classList.remove("active");
+  dots[slideIndex-1].classList.add("active");
+  setTimeout(showSlides, 4000);
+}
+
+function changeSlide(n) {
+  slideIndex += n - 1;
+  showSlides();
+}
+
+function currentSlide(n) {
+  slideIndex = n - 1;
+  showSlides();
+}
+</script>
+
+</body>
+</html>
+

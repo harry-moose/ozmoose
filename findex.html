@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oz Moose | Photography and Videography</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: #f0f0f0; background-color: #121212; }
+
+    header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #f0f0f0; background: url('banner.jpg') center/cover fixed; text-align: center; position: relative; }
+    header::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+    header h1, header h2, header a { position: relative; z-index: 1; }
+    header h1 { font-size: 4rem; text-transform: uppercase; letter-spacing: 2px; color: #ffb347; }
+    header h2 { font-size: 1.5rem; margin-top: 10px; color: #ffe680; }
+
+    .btn { margin-top: 30px; padding: 15px 40px; font-size: 1.2rem; background: linear-gradient(90deg, #ffb347, #ffcc33); border: none; border-radius: 8px; cursor: pointer; font-weight: 600; color: #000; transition: 0.3s; }
+    .btn:hover { background: linear-gradient(90deg, #ffcc33, #ffb347); transform: scale(1.05); }
+
+    section { padding: 80px 20px; text-align: center; }
+    .parallax { background-attachment: fixed; background-size: cover; background-position: center; color: #f0f0f0; }
+
+    #portfolio { background: #1e1e1e; }
+    #portfolio h2, #videos h2, #contact h2 { font-size: 2.5rem; margin-bottom: 30px; color: #ffcc33; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .gallery img, .gallery video { width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+
+    #videos { background: url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1600&q=80') center/cover fixed; position: relative; }
+    #videos::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+    #videos h2, #videos .gallery { position: relative; z-index: 1; }
+
+    #contact { background: #1a1a1a; color: #fff; }
+    iframe { width: 100%; max-width: 640px; height: 800px; border: none; border-radius: 10px; box-shadow: 0 0 20px rgba(255,204,51,0.3); }
+    .btn-center { display: flex; justify-content: center; }
+
+    footer { text-align: center; padding: 30px; background: #0d0d0d; color: #aaa; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Oz Moose</h1>
+    <h2>Photography and Videography</h2>
+    <a href="#contact"><button class="btn">Hire Us</button></a>
+  </header>
+
+  <section id="portfolio">
+    <h2>Real Estate Photography Portfolio</h2>
+    <div class="gallery">
+      <img src="real1.jpg" alt="Real Estate 1">
+      <img src="real4.jpg" alt="Real Estate 2">
+      <img src="real3.jpg" alt="Real Estate 3">
+    <!--  <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80" alt="Real Estate 2">
+      <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=800&q=80" alt="Real Estate 3">
+-->
+    </div>
+    <div class="btn-center">
+      <a href="#contact"><button class="btn">Hire Us</button></a>
+    </div>
+  </section>
+<!--
+  <section id="videos" class="parallax">
+    <h2>Videography Projects</h2>
+    <div class="gallery">
+      <video controls poster="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80">
+        <source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-modern-city-9074/1080p.mp4" type="video/mp4">
+      </video>
+      <video controls poster="https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=800&q=80">
+        <source src="https://cdn.coverr.co/videos/coverr-downtown-cityscape-1588/1080p.mp4" type="video/mp4">
+      </video>
+      <video controls poster="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80">
+        <source src="https://cdn.coverr.co/videos/coverr-drone-flying-over-sea-6704/1080p.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+-->
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd6IILi6y2bpI6IhL3IRo02uA55cqmYdzEcW-O1mFBIUCel7w/viewform?embedded=true">Loading…</iframe>
+  </section>
+
+  <footer>
+    <p>© 2025 Oz Moose. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
+
