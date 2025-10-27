@@ -4,12 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Oz Moose | Photography and Videography</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Poppins', sans-serif; background-color: #121212; color: #f0f0f0; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+    }
 
     /* Discount Banner */
     .promo-banner {
@@ -36,37 +40,60 @@
       border-radius: 5px;
       font-size: 0.9rem;
     }
-    .promo-banner.hide {
-      transform: translateY(-100%);
-    }
+    .promo-banner.hide { transform: translateY(-100%); }
+
     @keyframes slideDown {
       from { transform: translateY(-100%); }
       to { transform: translateY(0); }
     }
 
     header {
-      height: 100vh; display: flex; flex-direction: column; justify-content: center;
-      align-items: center; background: url('banner.jpg') center/cover fixed;
+      height: 100vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      background: url('banner.jpg') center/cover fixed;
       text-align: center; position: relative; padding-top: 60px;
     }
     header::before {
-      content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.5);
+      content: ""; position: absolute; inset: 0;
+      background: rgba(0,0,0,0.5);
     }
     header h1, header h2, header a { position: relative; z-index: 1; }
-    header h1 { font-size: 4rem; text-transform: uppercase; letter-spacing: 2px; color: #ffb347; }
-    header h2 { font-size: 1.5rem; margin-top: 10px; color: #ffe680; }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      letter-spacing: 1px;
+      color: #ffcc33;
+    }
+    header h2 {
+      font-size: 1.4rem;
+      margin-top: 10px;
+      font-weight: 400;
+      color: #ffe680;
+    }
 
     .btn {
-      margin-top: 30px; padding: 15px 40px; font-size: 1.2rem; font-weight: 600;
+      margin-top: 30px; padding: 15px 40px;
+      font-size: 1.1rem; font-weight: 600;
       background: linear-gradient(90deg, #ffb347, #ffcc33);
-      border: none; border-radius: 8px; cursor: pointer; color: #000; transition: 0.3s;
+      border: none; border-radius: 10px;
+      color: #000; cursor: pointer;
+      transition: 0.3s;
     }
     .btn:hover { transform: scale(1.05); }
 
-    section { padding: 80px 20px; text-align: center; }
-    h2 { font-size: 2.5rem; margin-bottom: 30px; color: #ffcc33; }
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #ffcc33;
+    }
 
-    /* Real Estate Gallery */
     #portfolio { background: #1e1e1e; }
     .gallery {
       display: grid;
@@ -76,53 +103,64 @@
     .gallery img {
       width: 100%; border-radius: 10px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      loading: lazy;
     }
 
-    /* Slideshow */
     #pako-festa { background: #181818; }
     .slideshow-container { position: relative; max-width: 900px; margin: auto; }
     .slide { display: none; }
-    .slide img { width: 100%; border-radius: 10px; }
+    .slide img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+    }
 
     .prev, .next {
-      cursor: pointer; position: absolute; top: 45%; width: auto; padding: 12px;
-      color: #fff; font-size: 20px; font-weight: bold;
-      background: rgba(0,0,0,0.5); border-radius: 4px;
+      cursor: pointer;
+      position: absolute; top: 45%;
+      padding: 12px;
+      color: #fff;
+      font-size: 20px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 4px;
     }
-    .prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
+    .prev:hover, .next:hover { background: rgba(0,0,0,0.9); }
     .prev { left: 0; }
     .next { right: 0; }
 
     .dots { margin-top: 20px; }
     .dot {
-      height: 12px; width: 12px; margin: 0 4px; background: #fff;
-      border-radius: 50%; display: inline-block; transition: background 0.3s;
+      height: 12px; width: 12px;
+      margin: 0 4px; background: #fff;
+      border-radius: 50%; display: inline-block;
     }
     .dot.active { background: #ffcc33; }
 
     #contact { background: #1a1a1a; }
     iframe {
-      width: 100%; max-width: 640px; height: 800px; border: none; border-radius: 10px;
+      width: 100%; max-width: 640px; height: 800px;
+      border: none; border-radius: 10px;
       box-shadow: 0 0 20px rgba(255,204,51,0.3);
     }
 
-    @media (max-width: 768px) {
-      header h1 { font-size: 2.6rem; }
-      header h2 { font-size: 1.1rem; }
-      h2 { font-size: 1.8rem; }
-      .btn { padding: 12px 28px; font-size: 1rem; }
+    @media(max-width:768px){
+      header h1 { font-size: 2.7rem; }
+      h2 { font-size: 2rem; }
       iframe { height: 500px; }
     }
 
-    footer { padding: 30px; background: #0d0d0d; color: #aaa; font-size: 0.9rem; }
+    footer {
+      padding: 30px;
+      background: #0d0d0d;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 
 <body>
 
 <div class="promo-banner" id="promoBanner">
-  ✨ New Client Special: 10% OFF Your First Shoot. Book Today!
+  ✨ New Client Special: Get Up To 25% OFF. Book Today!
   <a href="#contact" id="promoClick">Hire Us</a>
 </div>
 
@@ -135,18 +173,18 @@
 <section id="portfolio">
   <h2>Real Estate Photography</h2>
   <div class="gallery">
-    <img src="real1.jpg" alt="Real Estate 1" loading="lazy">
-    <img src="real4.jpg" alt="Real Estate 2" loading="lazy">
-    <img src="real3.jpg" alt="Real Estate 3" loading="lazy">
+    <img src="real1.jpg" alt="Real Estate" loading="lazy">
+    <img src="real4.jpg" alt="Real Estate" loading="lazy">
+    <img src="real3.jpg" alt="Real Estate" loading="lazy">
   </div>
 </section>
 
 <section id="pako-festa">
   <h2>We Shoot Public Events As Well</h2>
   <div class="slideshow-container">
-    <div class="slide"><img src="pako/35.jpg" alt="Pako Festa Event" loading="lazy"></div>
-    <div class="slide"><img src="pako/94.jpg" alt="Pako Festa Event" loading="lazy"></div>
-    <div class="slide"><img src="pako/50.jpg" alt="Pako Festa Event" loading="lazy"></div>
+    <div class="slide"><img src="pako/35.jpg" alt="Event" loading="lazy"></div>
+    <div class="slide"><img src="pako/94.jpg" alt="Event" loading="lazy"></div>
+    <div class="slide"><img src="pako/50.jpg" alt="Event" loading="lazy"></div>
 
     <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
     <span class="next" onclick="changeSlide(1)">&#10095;</span>
@@ -173,47 +211,30 @@
 </footer>
 
 <script>
-let slideIndex = 0;
+let slideIndex=0;
 showSlides();
-
-function showSlides() {
-  let slides = document.getElementsByClassName("slide");
-  let dots = document.getElementsByClassName("dot");
-  for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+function showSlides(){
+  let slides=document.getElementsByClassName("slide");
+  let dots=document.getElementsByClassName("dot");
+  for(let i=0;i<slides.length;i++)slides[i].style.display="none";
   slideIndex++;
-  if (slideIndex > slides.length) slideIndex = 1;
-  slides[slideIndex-1].style.display = "block";
-  for (let i = 0; i < dots.length; i++) dots[i].classList.remove("active");
+  if(slideIndex>slides.length)slideIndex=1;
+  slides[slideIndex-1].style.display="block";
+  for(let i=0;i<dots.length;i++)dots[i].classList.remove("active");
   dots[slideIndex-1].classList.add("active");
-  setTimeout(showSlides, 4000);
+  setTimeout(showSlides,4000);
 }
+function changeSlide(n){slideIndex+=n-1;showSlides();}
+function currentSlide(n){slideIndex=n-1;showSlides();}
 
-function changeSlide(n) {
-  slideIndex += n - 1;
-  showSlides();
-}
+let promoBanner=document.getElementById("promoBanner");
+window.addEventListener("scroll",()=>{if(window.scrollY>150)promoBanner.classList.add("hide");else promoBanner.classList.remove("hide");});
 
-function currentSlide(n) {
-  slideIndex = n - 1;
-  showSlides();
-}
-
-// Hide banner after scroll
-let promoBanner = document.getElementById("promoBanner");
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 150) {
-    promoBanner.classList.add("hide");
-  } else {
-    promoBanner.classList.remove("hide");
-  }
-});
-
-// Click tracking
-document.getElementById("promoClick").addEventListener("click", () => {
-  let count = localStorage.getItem("promoClicks") || 0;
-  count = Number(count) + 1;
-  localStorage.setItem("promoClicks", count);
-  console.log("Promo Clicks:", count);
+document.getElementById("promoClick").addEventListener("click",()=>{
+  let count=localStorage.getItem("promoClicks")||0;
+  count=Number(count)+1;
+  localStorage.setItem("promoClicks",count);
+  console.log("Promo Clicks:",count);
 });
 </script>
 
