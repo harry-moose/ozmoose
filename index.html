@@ -11,10 +11,43 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Poppins', sans-serif; background-color: #121212; color: #f0f0f0; }
 
+    /* Discount Banner */
+    .promo-banner {
+      width: 100%;
+      background: linear-gradient(90deg, #ffcc33, #ffb347);
+      color: #000;
+      text-align: center;
+      padding: 12px 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      transition: transform 0.4s ease;
+      animation: slideDown 0.8s ease-out;
+    }
+    .promo-banner a {
+      margin-left: 10px;
+      padding: 6px 12px;
+      background: #000;
+      color: #ffcc33;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+    .promo-banner.hide {
+      transform: translateY(-100%);
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+
     header {
       height: 100vh; display: flex; flex-direction: column; justify-content: center;
       align-items: center; background: url('banner.jpg') center/cover fixed;
-      text-align: center; position: relative;
+      text-align: center; position: relative; padding-top: 60px;
     }
     header::before {
       content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.5);
@@ -43,6 +76,7 @@
     .gallery img {
       width: 100%; border-radius: 10px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      loading: lazy;
     }
 
     /* Slideshow */
@@ -52,8 +86,8 @@
     .slide img { width: 100%; border-radius: 10px; }
 
     .prev, .next {
-      cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px;
-      margin-top: -22px; color: #fff; font-size: 24px; font-weight: bold;
+      cursor: pointer; position: absolute; top: 45%; width: auto; padding: 12px;
+      color: #fff; font-size: 20px; font-weight: bold;
       background: rgba(0,0,0,0.5); border-radius: 4px;
     }
     .prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
@@ -73,29 +107,24 @@
       box-shadow: 0 0 20px rgba(255,204,51,0.3);
     }
 
-    /* Mobile responsive text adjustments */
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 2.6rem;
-  }
-  header h2 {
-    font-size: 1.1rem;
-  }
-  h2 {
-    font-size: 1.8rem;
-  }
-  .btn {
-    padding: 12px 28px;
-    font-size: 1rem;
-  }
-}
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.6rem; }
+      header h2 { font-size: 1.1rem; }
+      h2 { font-size: 1.8rem; }
+      .btn { padding: 12px 28px; font-size: 1rem; }
+      iframe { height: 500px; }
+    }
 
-    
     footer { padding: 30px; background: #0d0d0d; color: #aaa; font-size: 0.9rem; }
   </style>
 </head>
 
 <body>
+
+<div class="promo-banner" id="promoBanner">
+  ✨ New Client Special: 10% OFF Your First Shoot. Book Today!
+  <a href="#contact" id="promoClick">Hire Us</a>
+</div>
 
 <header>
   <h1>Oz Moose</h1>
@@ -106,19 +135,18 @@
 <section id="portfolio">
   <h2>Real Estate Photography</h2>
   <div class="gallery">
-    <img src="real1.jpg" alt="Real Estate 1">
-    <img src="real4.jpg" alt="Real Estate 2">
-    <img src="real3.jpg" alt="Real Estate 3">
+    <img src="real1.jpg" alt="Real Estate 1" loading="lazy">
+    <img src="real4.jpg" alt="Real Estate 2" loading="lazy">
+    <img src="real3.jpg" alt="Real Estate 3" loading="lazy">
   </div>
 </section>
 
 <section id="pako-festa">
   <h2>We Shoot Public Events As Well</h2>
-
   <div class="slideshow-container">
-    <div class="slide"><img src="pako/35.jpg"></div>
-    <div class="slide"><img src="pako/94.jpg"></div>
-    <div class="slide"><img src="pako/50.jpg"></div>
+    <div class="slide"><img src="pako/35.jpg" alt="Pako Festa Event" loading="lazy"></div>
+    <div class="slide"><img src="pako/94.jpg" alt="Pako Festa Event" loading="lazy"></div>
+    <div class="slide"><img src="pako/50.jpg" alt="Pako Festa Event" loading="lazy"></div>
 
     <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
     <span class="next" onclick="changeSlide(1)">&#10095;</span>
@@ -169,8 +197,25 @@ function currentSlide(n) {
   slideIndex = n - 1;
   showSlides();
 }
+
+// Hide banner after scroll
+let promoBanner = document.getElementById("promoBanner");
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 150) {
+    promoBanner.classList.add("hide");
+  } else {
+    promoBanner.classList.remove("hide");
+  }
+});
+
+// Click tracking
+document.getElementById("promoClick").addEventListener("click", () => {
+  let count = localStorage.getItem("promoClicks") || 0;
+  count = Number(count) + 1;
+  localStorage.setItem("promoClicks", count);
+  console.log("Promo Clicks:", count);
+});
 </script>
 
 </body>
 </html>
-
